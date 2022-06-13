@@ -6,6 +6,13 @@ export enum CarStatus {
     UNAVAILABLE = "UNAVAILABLE",
 }
 
+export const carStatusesToStatusName = new Map();
+carStatusesToStatusName.set(CarStatus.FREE, "Free");
+carStatusesToStatusName.set(CarStatus.IN_RENT, "In rent");
+carStatusesToStatusName.set(CarStatus.IN_BOOKING, "In booking");
+carStatusesToStatusName.set(CarStatus.IN_RENT_PAUSED, "In rent paused");
+carStatusesToStatusName.set(CarStatus.UNAVAILABLE, "Unavailable");
+
 export interface IDetailProps {
     start: Date,
     end: Date,
@@ -29,6 +36,7 @@ export interface IAddCar {
     imgUrl: string,
     rentPricePerHour: string,
     bookPricePerHour: string,
+    carStatus: CarStatus | null,
 }
 
 export interface ILoginUser {

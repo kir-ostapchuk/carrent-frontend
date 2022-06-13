@@ -1,19 +1,23 @@
-import React from 'react'
 import AddCarView from './AddCarView';
-import {FC, useState} from 'react';
+import React, {FC, useState} from 'react';
 import LocalStorage from "../../storage/LocalStorage";
 import {useNavigate} from "react-router-dom";
 import ApiService from "../../api/ApiService";
 import {fetchBalance, useBalanceDispatch} from "../../slices/BalanceSlice";
 import {updateAdmin, updateLoggedIn} from "../../slices/UserSlice";
+import {IAddCar} from "../../types/types";
 
 const AddCarContainer: FC = () => {
 
     const navigate = useNavigate();
     const dispatch = useBalanceDispatch();
-    const [formUser, setFormUser] = useState({
-        email: '',
-        password: ''
+    const [formUser, setFormUser] = useState<IAddCar>({
+        brand: '',
+        model: '',
+        imgUrl: '',
+        rentPricePerHour: '',
+        bookPricePerHour: '',
+        carStatus: null,
     })
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -43,7 +47,5 @@ const AddCarContainer: FC = () => {
         <AddCarView handleSubmit={handleSubmit} handleFormChange={handleFormChange} formUser={formUser}/>
     );
 };
-
-
 
 export default AddCarContainer;
