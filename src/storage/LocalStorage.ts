@@ -1,43 +1,28 @@
 class LocalStorage {
-    setToken = (token: string) => {
-        window.localStorage.setItem('token', token);
-    };
+  static setToken = (token: string) =>
+    window.localStorage.setItem('token', token);
 
-    setUserId = (userId: string) => {
-        window.localStorage.setItem('userId', userId);
-    };
+  static setUserId = (userId: string) =>
+    window.localStorage.setItem('userId', userId);
 
-    getToken = (): string => {
-        return window.localStorage.getItem('token') || "";
-    };
+  static getToken = (): string => window.localStorage.getItem('token') || '';
 
-    getUserId = () => {
-        return window.localStorage.getItem('userId');
-    };
+  static getUserId = () => window.localStorage.getItem('userId');
 
-    clearToken = () => {
-        window.localStorage.removeItem('token');
-    }
+  static clearToken = () => window.localStorage.removeItem('token');
 
-    clearUserId = () => {
-        window.localStorage.removeItem('userId');
-    }
+  static clearUserId = () => window.localStorage.removeItem('userId');
 
-    setLoggedIn(loggedIn: string) {
-        window.localStorage.setItem('loggedIn', loggedIn);
-    }
+  static setLoggedIn = (loggedIn: string) =>
+    window.localStorage.setItem('loggedIn', loggedIn);
 
-    getLoggedIn = (): string => {
-        return window.localStorage.getItem('loggedIn') || "";
-    }
+  static getLoggedIn = (): string =>
+    window.localStorage.getItem('loggedIn') || '';
 
-    setAdmin(admin: string) {
-        window.localStorage.setItem('admin', admin);
-    }
+  static setAdmin = (admin: string) =>
+    window.localStorage.setItem('admin', admin);
 
-    getAdmin = (): string => {
-        return window.localStorage.getItem('admin') || "";
-    }
+  static getAdmin = (): string => window.localStorage.getItem('admin') || '';
 }
 
-export default new LocalStorage();
+export default LocalStorage;

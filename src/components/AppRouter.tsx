@@ -1,30 +1,21 @@
-import {Navigate, Route, Routes} from 'react-router-dom';
-import {allRoutes, publicRoutes, RouteNames} from '../routes';
-import React from 'react';
-import {useSelector} from "react-redux";
-import {selectLoggedIn} from "../slices/UserSlice";
+import { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-function AppRouter() {
+import { allRoutes, publicRoutes, RouteNames } from '../routes';
+import { selectLoggedIn } from '../slices/UserSlice';
 
-    const loggedIn = useSelector(selectLoggedIn);
+const AppRouter: FC = () => {
+  const loggedIn = useSelector(selectLoggedIn);
 
-    return (
-        <Routes>
-            {
-                (loggedIn ? allRoutes : publicRoutes).map((route) => (
-                    <Route
-                        path={route.path}
-                        element={route.component}
-                        key={route.path}
-                    />
-                ))
-            }
-            <Route
-                path="*"
-                element={<Navigate to={RouteNames.CARS} replace/>}
-            />
-        </Routes>
-    );
-}
+  return (
+    <Routes>
+      {(loggedIn ? allRoutes : publicRoutes).map((route) => (
+        <Route element={route.component} key={route.path} path={route.path} />
+      ))}
+      <Route element={<Navigate replace to={RouteNames.CARS} />} path="*" />
+    </Routes>
+  );
+};
 
 export default AppRouter;
